@@ -33,6 +33,11 @@ struct Class Paladin = {
         .add_int = 20
 };
 
+struct Class Gunslinger;
+struct Class Wizard;
+struct Class Sorcerer; // because theres a huge difference
+struct Class Alchemist;
+
 void addClass(struct Player *player){
 	player->health += player->_class->add_hp;
 	player->mana += player->_class->add_mp;

@@ -7,6 +7,7 @@ struct Player {
         double mana;
         int strength;
         int intelligence;
+        int speed;
         int stunned;
         struct Class *_class;
 };
@@ -28,6 +29,7 @@ struct Attack {
         enum damageType type;
 
 };
+void fight(struct Player *attacker, struct Player *victim);
 
 
 #endif

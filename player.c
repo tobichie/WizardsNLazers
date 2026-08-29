@@ -3,16 +3,29 @@
 #include "include/player.h"
 #include "include/mob.h"
 
-void fight(struct Player *attacker, struct Player *victim) {
 
-}
+
+
 
 void attack(struct Player *attacker, struct Player *victim, struct Attack *attack){
 	// calculate the attackers damage using his strength, the damage type and subtract it from the victim
-		
+	// the attacker is first, attacker is decided
 	printf("%s attacked %s with %s!", attacker->name, victim->name, attack->name);
 }
 
+void fight(struct Player *attacker, struct Player *victim) {
+	// check speed stat and get random number with biased depending on difference in speed
+	if (attacker->speed >= victim->speed)
+		printf("Attacker %s will go first", attacker->name);
+	else
+		printf("Victim %s will go first", victim->name);
+
+	while (attacker->health > 0 && victim->health > 0) {
+		// show the players attack options, health and stats and the opponents stats
+		// choose an attack from the list of permitted attacks
+	}
+
+}
 struct Player getPlayer() {
 	showClasses();
 	int index;
@@ -33,6 +46,7 @@ struct Player getPlayer() {
 			    .mana = 50.0,
 			    .strength = 10,
 			    .intelligence = 10,
+				.speed = 10,
 			    ._class = &Knight
 			};
 
