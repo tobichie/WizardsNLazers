@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "include/classes.h"
 #include "include/player.h"
+#include "include/mob.h"
+
+void fight(struct Player *attacker, struct Player *victim) {
+
+}
 
 void attack(struct Player *attacker, struct Player *victim, struct Attack *attack){
 	// calculate the attackers damage using his strength, the damage type and subtract it from the victim
@@ -78,7 +83,13 @@ struct Player getPlayer() {
 	// get the players class and add/deduct stats
 	
 	// only here for testing will be removed once theres more classes and it will be made a classless option
-	struct Player player;
+	struct Player player = {
+        	.health = 100.0,
+			.mana = 50.0,
+			.strength = 10,
+			.intelligence = 10,
+			._class = &Paladin
+		};
 	
 	//yer print all options and their index and then receive the index from the user
 	return player;	

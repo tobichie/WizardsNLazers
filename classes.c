@@ -19,16 +19,16 @@ void showClasses()
 struct Class Knight = {
 	.name = "Knight",
 	.index = 0,
-	.add_hp = 20.0,
-	.add_mp = 10.0,
+	.add_hp = 20,
+	.add_mp = 10,
 	.add_str = 30,
 	.add_int = 10
 };
 struct Class Paladin = {
         .name = "Paladin",
 	.index = 0,
-        .add_hp = 30.0,
-        .add_mp = 15.0,
+        .add_hp = 30,
+        .add_mp = 15,
         .add_str = 20,
         .add_int = 20
 };
