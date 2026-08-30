@@ -15,7 +15,8 @@ struct Player getPlayer();
 enum classes {
         KNIGHT,
         PALADIN,
-
+		GUNSLINGER,
+		END
 };
 
 // struct for Classes

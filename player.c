@@ -36,45 +36,48 @@ struct Attack pickAttack(struct Player *attacker) {
 	if (attacker->is_bot == 0) {
 		switch (attacker->_class->index) { // print all attacks of the class with index 0
 			case 0:
+				printf("Youre a Knight");
 				for (int i = 0; i < KNIGHT_SKILL_COUNT;i++) {
 					printf("ID: %d | %s\n", ++j, knight_skills[i]);
 
 				}
 				scanf_s("%d", &id);
 					// map the index to a knight skill
-					switch (--id) {
-						case 0: return Slash;
-						case 1: return Swipe;
-						case 2: return Shield_Bash;
+					switch (id) {
+						case 1: return Slash;
+						case 2: return Swipe;
+						case 3: return Shield_Bash;
 					}
 				break;
 			case 1:
-				for (int i = 0; i < GUNSLINGER_SKILL_COUNT;i++) {
+				printf("Youre a Paladin");
+				for (int i = 0; i < PALADIN_SKILL_COUNT;i++) {
 					printf("ID: %d | %s\n", ++j, paladin_skills[i]);
 				}
 				scanf_s("%d", &id);
 				// map the index to a knight skill
-				switch (--id) {
-					case 0: return Smite;
-					case 1: return Holy_Handgrenade;
-					case 2: return Holy_Shield_Bash;
+				switch (id) {
+					case 1: return Smite;
+					case 2: return Holy_Handgrenade;
+					case 3: return Holy_Shield_Bash;
 				}
 				break;
 
 			case 2:
+				printf("Youre a Gunslinger");
 				for (int i = 0; i < GUNSLINGER_SKILL_COUNT;i++) {
 					printf("ID: %d | %s\n", ++j, gunslinger_skills[i]);
 				}
 				scanf_s("%d", &id);
 				// map the index to a knight skill
-				switch (--id) {
-					case 0: return Shoot;
-					case 1: return ShootHarder;
-					case 2: return Fan;
+				switch (id) {
+					case 1: return Shoot;
+					case 2: return ShootHarder;
+					case 3: return Fan;
 				}
 				break;
 
-			default: pickAttack(attacker);	break;
+			default: printf("DEFAULTED"); pickAttack(attacker);	break;
 
 		}
 	} else
@@ -162,36 +165,63 @@ struct Player getPlayer() {
 			    player.intelligence,
 			    player._class->name
 			);
-			break;
+			return player;
 		 }
-                case PALADIN:
-                {       
-	       		//assign the user the knight class
-                        struct Player player = { // need to add braces around the case to give each case its own scope
-                            .health = 100.0,
-                            .mana = 50.0,
-                            .strength = 10,
-                            .intelligence = 10,
-                        	._class = &Paladin,
-							.is_bot = 0
-                        };
+        case PALADIN:
+        {
+	    //assign the user the knight class
+                struct Player player = { // need to add braces around the case to give each case its own scope
+                    .health = 100,
+                    .mana = 50,
+                    .strength = 10,
+                    .intelligence = 10,
+                    ._class = &Paladin,
+					.is_bot = 0
+                };
 
-                        addClass(&player);
+                addClass(&player);
 
-                        printf(
-                            "Health: %.1f\n"
-                            "Mana: %.1f\n"
-                            "Strength: %d\n"
-                            "Intelligence: %d\n"
-                            "Class Name: %s\n",
-                            player.health,
-                            player.mana,
-                            player.strength,
-                            player.intelligence,
-                            player._class->name
-                        );
-			break;
+                printf(
+                    "Health: %.1f\n"
+                    "Mana: %.1f\n"
+                    "Strength: %d\n"
+                    "Intelligence: %d\n"
+                    "Class Name: %s\n",
+                    player.health,
+                    player.mana,
+                    player.strength,
+                    player.intelligence,
+                    player._class->name
+                );
+            return player;
 		}
+        	case GUNSLINGER:
+        	{
+        		struct Player player = { // need to add braces around the case to give each case its own scope
+        			.health = 50,
+					.mana = 80,
+					.strength = 5,
+					.intelligence = 20,
+					._class = &Gunslinger,
+					.is_bot = 0
+				};
+
+        		addClass(&player);
+
+        		printf(
+					"Health: %.1f\n"
+					"Mana: %.1f\n"
+					"Strength: %d\n"
+					"Intelligence: %d\n"
+					"Class Name: %s\n",
+					player.health,
+					player.mana,
+					player.strength,
+					player.intelligence,
+					player._class->name
+				);
+        		return player;
+        	}
 	}
 	// get the players class and add/deduct stats
 	

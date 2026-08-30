@@ -4,12 +4,13 @@
 
 const char *class_names[] = {
         "KNIGHT",
-        "PALADIN"
+        "PALADIN",
+		"GUNSLINGER"
 };
 
 void showClasses()
 {
-	for (int i = 0; i<= PALADIN; i++) {
+	for (int i = 0; i < END; i++) {
 		printf("ID:%d | %s\n", (i + 1), class_names[i]);
 	}
 }

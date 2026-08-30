@@ -6,8 +6,8 @@
 struct Player spawnMob() {
     struct Player turtledude = {
         .name = "turtledude",
-        .health = 100.0,
-        .mana = 50.0,
+        .health = 100,
+        .mana = 50,
         .strength = 10,
         .intelligence = 10,
         .speed = 30,
