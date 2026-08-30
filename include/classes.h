@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef CLASSES_H
 #define CLASSES_H
 #ifndef NAME_CAP
@@ -27,7 +29,10 @@ struct Class {
 	int add_spd;
 	int defense;
 };
-
+extern const char *knight_skills[];
+extern const char *paladin_skills[];
+extern const char *gunslinger_skills[];
+// links to all the skill lists
 extern struct Class Knight;
 enum KnightSkills {
 	SLASH,
@@ -35,11 +40,7 @@ enum KnightSkills {
 	SHIELD_BASH,
 	KNIGHT_SKILL_COUNT
 };
-const char *knight_skills[] = {
-	"Slash",
-	"Swipe",
-	"Shield Bash"
-};
+
 extern struct Attack Slash;
 extern struct Attack Swipe;
 extern struct Attack Shield_Bash;
@@ -52,14 +53,10 @@ enum PaladinSkills {
 	HOLY_SHIELD_BASH, //idk
 	PALADIN_SKILL_COUNT
 };
-const char *paladin_skills[] = {
-	"Smite",
-	"Holy Handgrenade",
-	"Holy Shield Bash"
-};
+
 extern struct Attack Smite;
 extern struct Attack Holy_Handgrenade;
-extern struct Attack Holy_Shield_Block;
+extern struct Attack Holy_Shield_Bash;
 // classes to be added
 extern struct Class Gunslinger;
 enum GunslingerSkills {
@@ -68,11 +65,7 @@ enum GunslingerSkills {
 	FAN,
 	GUNSLINGER_SKILL_COUNT
 };
-const char *gunslinger_skills[] = {
-	"Shoot",
-	"Shoot Harder",
-	"Fan"
-};
+
 extern struct Attack Shoot;
 extern struct Attack ShootHarder;
 extern struct Attack Fan;

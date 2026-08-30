@@ -3,14 +3,14 @@
 #define NAME_CAP 50
 struct Player {
         char name[NAME_CAP];
-        double health;
-        double mana;
+        float health;
+        float mana;
         int strength;
         int intelligence;
         int speed;
         int stunned;
         int level;
-        double xp;
+        float xp;
         struct Class *_class;
         int is_bot;
 };
@@ -28,7 +28,7 @@ enum damageType {
 
 struct Attack {
         char name[NAME_CAP];
-        double dmg;
+        float dmg;
         enum damageType type;
         float accuracy;
         float mp_req;

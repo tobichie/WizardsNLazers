@@ -27,7 +27,34 @@ struct Class Knight = {
 	.add_str = 30,
 	.add_int = 10
 };
+const char *knight_skills[] = {
+	"Slash",
+	"Swipe",
+	"Shield Bash"
+};
+struct Attack Slash = {
+	.name = "Slash",
+	.dmg = 30,
+	LIGHT,
+	0.8,
+	0
+};
+struct Attack Swipe = {
+	.name = "Swipe",
+	.dmg = 30,
+	.type = HEAVY,
+	.accuracy = 0.7,
+	.mp_req = 10
 
+};
+struct Attack Shield_Bash = {
+	.name = "Shield Bash",
+	.dmg = 80,
+	.type = MID,
+	.accuracy = 0.6,
+	.mp_req = 8
+
+};
 // KNIGHT END ________________
 
 // PALADIN -----------------------------
@@ -40,15 +67,19 @@ struct Class Paladin = {
     .add_str = 20,
     .add_int = 20
 };
-
-static struct Attack Smite = {
+const char *paladin_skills[] = {
+	"Smite",
+	"Holy Handgrenade",
+	"Holy Shield Bash"
+};
+struct Attack Smite = {
 	.name = "Smite",
 	.dmg = 30,
 	LIGHT,
 	0.8,
 	0
 };
-static struct Attack Holy_Handgrenade = {
+struct Attack Holy_Handgrenade = {
 	.name = "Holy Handgrenade",
 	.dmg = 30,
 	.type = HEAVY,
@@ -56,7 +87,7 @@ static struct Attack Holy_Handgrenade = {
 	.mp_req = 10
 
 };
-static struct Attack Holy_Shield_Bash = {
+struct Attack Holy_Shield_Bash = {
 	.name = "Holy Shield Bash",
 	.dmg = 80,
 	.type = MID,
@@ -76,15 +107,20 @@ struct Class Gunslinger = {
 	.add_str = 20,
 	.add_int = 20
 };
+const char *gunslinger_skills[] = {
+	"Shoot",
+	"Shoot Harder",
+	"Fan"
+};
 // char array of attack names is stored in classes.h along with the enum
-static struct Attack Shoot = {
+struct Attack Shoot = {
 	.name = "Shoot",
 	.dmg = 30,
 	LIGHT,
 	0.8,
 	0
 };
-static struct Attack ShootHarder = {
+struct Attack ShootHarder = {
 	.name = "Shoot harder",
 	.dmg = 30,
 	HEAVY,
@@ -92,7 +128,7 @@ static struct Attack ShootHarder = {
 	10
 
 };
-static struct Attack Fan = {
+struct Attack Fan = {
 	.name = "Fan",
 	.dmg = 80,
 	MID,
