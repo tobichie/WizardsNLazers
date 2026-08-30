@@ -9,7 +9,10 @@ struct Player {
         int intelligence;
         int speed;
         int stunned;
+        int level;
+        double xp;
         struct Class *_class;
+        int is_bot;
 };
 struct Player getPlayer(void);
 enum damageType {
@@ -27,7 +30,8 @@ struct Attack {
         char name[NAME_CAP];
         double dmg;
         enum damageType type;
-
+        float accuracy;
+        float mp_req;
 };
 void fight(struct Player *attacker, struct Player *victim);
 
