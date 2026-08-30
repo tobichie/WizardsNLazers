@@ -2,11 +2,19 @@
 #include "./include/classes.h"
 #include "./include/player.h"
 
-const char *class_names[] = {
+const char *class_names[] =
+{
         "KNIGHT",
         "PALADIN",
 		"GUNSLINGER"
 };
+
+void showStats(struct Player *entity)
+{
+	// print the players stats to the right of the screen
+	printf("Stats\n\t\tName: %s\n\t\tHP: %f\n", entity->_class->name, entity->health); // probably gonna have to add \t after every \n not sure.
+	// just change to ncurses later
+}
 
 void showClasses()
 {

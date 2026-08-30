@@ -8,6 +8,7 @@
 struct CLASS_OPTIONS  {
 	int index;
 };
+extern void showStats();
 void addClass();
 void showClasses();
 struct Player getPlayer();

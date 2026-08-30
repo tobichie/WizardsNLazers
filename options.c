@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "./include/options.h"
 #include "./include/player.h"
-#define clear() printf("\033[H\033[J")
 
 
 const char *option_names[] = {

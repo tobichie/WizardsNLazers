@@ -1,6 +1,14 @@
+#pragma once
+#ifndef _WIN64
+#define clear() printf("\033[H\033[J")
+#else
+#define clear() printf("\033[2J")
+#endif
+
 #ifndef PLAYER_H
 #define PLAYER_H
 #define NAME_CAP 50
+
 struct Player {
         char name[NAME_CAP];
         float health;
