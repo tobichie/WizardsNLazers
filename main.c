@@ -8,7 +8,9 @@
 int main(void) 
 {
 	struct Player _player = getOptions();
-	struct Player _mob = spawnMob();
+	// check if I want to use a custom mob or standard mobs lineup
+	struct Player _mob = customOrSet();
+	printf("Starting fight between %s and %s", _player.name, _mob.name);
 	fight(&_player, &_mob);
 
 	return 0;

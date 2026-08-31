@@ -11,7 +11,9 @@
 
 struct Player {
         char name[NAME_CAP];
+        float current_health; // gets updated during match and used as a reference when increasing health
         float health;
+        float current_mana;
         float mana;
         int strength;
         int intelligence;
@@ -22,7 +24,7 @@ struct Player {
         struct Class *_class;
         int is_bot;
 };
-struct Player getPlayer(void);
+struct Player getPlayer();
 enum damageType {
         LIGHT,
         MID,

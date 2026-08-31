@@ -28,6 +28,8 @@ void attacks(struct Player *attacker, struct Player *victim, struct Attack *atta
 	float adjusted_dmg = (1 + adjusted_str) * attack->dmg;
 	attacker->mana -= attack->mp_req;
 	victim->health -= adjusted_dmg;
+	printf("%s did %f damage to %s!\n", attack->name, adjusted_dmg, victim->name);
+
 }
 
 
