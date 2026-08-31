@@ -23,6 +23,7 @@ struct Player {
         float xp;
         struct Class *_class;
         int is_bot;
+        int is_custom;
 };
 struct Player getPlayer();
 enum damageType {
@@ -44,6 +45,7 @@ struct Attack {
         float mp_req;
 };
 void fight(struct Player *attacker, struct Player *victim);
+void gameLoop(struct Player *player);
 
 
 #endif

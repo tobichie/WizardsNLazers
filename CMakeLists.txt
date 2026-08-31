@@ -1,4 +1,4 @@
-add_executable(new_target classes.c
+add_executable(WizardsNLazers classes.c
         main.c
         mob.c
         options.c

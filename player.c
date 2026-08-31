@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "include/classes.h"
 #include "include/player.h"
-
+#include <Windows.h>
 #include <string.h>
 
 #include "include/mob.h"
-
+#include "include/options.h"
 
 
 float getAttackDMG(struct Player *attacker) {
@@ -103,6 +103,32 @@ struct Attack pickAttack(struct Player *attacker) {
 	return Shield_Bash;
 }
 
+void gameLoop(struct Player *player) {
+	// start fight, end fight, assign new hp, assign xp, next fight
+	struct Player _mob = customOrSet();
+	while (player->health >= 0) {
+		printf("Starting fight between %s and %s\n", player->name, _mob.name);
+		Sleep(2000);
+		fight(player, &_mob);
+		if (_mob.is_custom == 1) {
+			spawnCustomMob();
+			return;
+		}
+		_mob = spawnMob();
+	}
+	// player died
+	int choice;
+	printf_s("You died, would you like to restart?\n0 = No\n1 = Yes"); // currently 0 = yes in a lot of code, gotta change that
+	scanf_s("%d", &choice);
+	switch (choice) {
+		case 0: printf("Exiting..."); Sleep(3000); exit(1);
+		case 1: struct Player _player = getOptions();gameLoop(&_player);
+		default: ;
+	}
+
+}
+
+
 void fight(struct Player *attacker, struct Player *victim) {
 
 	struct Player *first;
@@ -122,15 +148,41 @@ void fight(struct Player *attacker, struct Player *victim) {
 	while (attacker->health > 0 && victim->health > 0) {
 		// show the players attack options, health and stats and the opponents stats
 		// choose an attack from the list of permitted attacks
+		if (attacker->health <= 0) {
+			printf("%s Won!\n", victim->name);
+			break;
+		}
+		if (victim->health <= 0) {
+			printf("%s Won!\n", attacker->name);
+			break;
+		}
 		clear();
-		struct Attack attack = pickAttack(first);
-		attacks(first, second, &attack);
-		struct Attack attack2 = pickAttack(second);
-		attacks(second, first, &attack2);
+
+
+
+		if (attacker->health > 0 && victim->health > 0) {
+			struct Attack attack = pickAttack(first);
+			attacks(first, second, &attack);
+		}
+		if (attacker->health > 0 && victim->health > 0) {
+			struct Attack attack2 = pickAttack(second);
+			attacks(second, first, &attack2);
+		}
+
+
+
 		// return updated health and mana etc
 		printf("Name: %s | HP: %f\n", attacker->name, attacker->health);
 		printf("Name: %s | HP: %f\n", victim->name, victim->health);
+
 	}
+	if (attacker->health <= 0) {
+		printf("The Victor is %s\n", victim->name);
+		Sleep(1000);
+		return;
+	}
+	printf("The Victor is %s\n", attacker->name);
+	Sleep(3000);
 }
 
 struct Player getPlayer() {
@@ -237,11 +289,12 @@ struct Player getPlayer() {
 				);
         		return player;
         	}
-	}
+	        default: ;
+        }
 	// get the players class and add/deduct stats
 	
 	// only here for testing will be removed once theres more classes and it will be made a classless option
-	struct Player player = {
+	const struct Player player = {
         	.name = "Steve",
         	.health = 100,
 			.mana = 50,
