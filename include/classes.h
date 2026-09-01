@@ -40,6 +40,7 @@ enum KnightSkills {
 	SLASH,
 	SWIPE,
 	SHIELD_BASH,
+	MEAD,
 	KNIGHT_SKILL_COUNT
 };
 
@@ -59,6 +60,7 @@ enum PaladinSkills {
 extern struct Attack Smite;
 extern struct Attack Holy_Handgrenade;
 extern struct Attack Holy_Shield_Bash;
+extern struct Attack Mead;
 // classes to be added
 extern struct Class Gunslinger;
 enum GunslingerSkills {

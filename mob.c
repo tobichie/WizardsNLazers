@@ -30,7 +30,6 @@ struct Player spawnCustomMob() {
     int strength;
     int intelligence;
     int speed;
-    int is_custom;
 
     int choice;
     printf("Would you like to set all stats at once?\n0 = Yes\n1 = No\n");
@@ -48,7 +47,6 @@ struct Player spawnCustomMob() {
         strength = int_stats;
         intelligence = int_stats;
         speed = int_stats;
-        is_custom = 1;
     } else {
         printf("Health: ");
         scanf_s("%f", &health);
@@ -60,7 +58,6 @@ struct Player spawnCustomMob() {
         scanf_s("%d", &intelligence);
         printf("Speed: ");
         scanf_s("%d", &speed);
-        is_custom = 0;
     }
 
     printf("Name: ");
@@ -75,7 +72,7 @@ struct Player spawnCustomMob() {
         .speed = speed,
         ._class = &Knight,
         .is_bot = 1,
-        .is_custom = &is_custom
+        .is_custom = 1
     };
     strcpy_s(turtledude.name, sizeof(turtledude.name), name);
     printf("Sending %s to the Arena\n", turtledude.name);

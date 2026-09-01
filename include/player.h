@@ -32,17 +32,23 @@ enum damageType {
         HEAVY,
 
 };
-
-
-
+enum skillType {
+        HEAL,
+        BUFF,
+        DEBUFF,
+        DAMAGE
+};
 // all mobs are initialized as players
 
 struct Attack {
         char name[NAME_CAP];
         float dmg;
+        float heal;
         enum damageType type;
         float accuracy;
         float mp_req;
+        enum skillType skillType;
+
 };
 void fight(struct Player *attacker, struct Player *victim);
 void gameLoop(struct Player *player);

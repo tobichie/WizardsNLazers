@@ -16,18 +16,25 @@ float getAttackDMG(struct Player *attacker) {
 void attacks(struct Player *attacker, struct Player *victim, struct Attack *attack){
 	// calculate the attackers damage using his strength, the damage type and subtract it from the victim
 	// the attacker is first, attacker is decided
-	printf("%s attacked %s with %s!\n", attacker->name, victim->name, attack->name);
 	// update the attackers mana stat and the opponents hp using the attacks damage adjusted for str and the opponents health adjusted for defense
 	// first check if the attacker has the required mp
 	if (attacker->mana < attack->mp_req) {
-		printf("Couldnt execute the attack due to lacking mana\n");
+		printf("Couldnt execute the Skill due to lacking mana\n");
 		return;
 	}
+	attacker->mana -= attack->mp_req;
+	// Check if its heal first and then add
+	if (attack->heal) {
+		printf("Skill is heal\n");
+		attacker->health += attack->heal; // in the future check what the max health is to not overheal
+		return;
+	}
+
 	float str = (float)attacker->strength;
 	float adjusted_str = str / 100;
 	float adjusted_dmg = (1 + adjusted_str) * attack->dmg;
-	attacker->mana -= attack->mp_req;
 	victim->health -= adjusted_dmg;
+	printf("%s attacked %s with %s!\n", attacker->name, victim->name, attack->name);
 	printf("%s did %f damage to %s!\n", attack->name, adjusted_dmg, victim->name);
 
 }
@@ -53,6 +60,7 @@ struct Attack pickAttack(struct Player *attacker) {
 						case 1: return Slash;
 						case 2: return Swipe;
 						case 3: return Shield_Bash;
+						case 4: return Mead;
 					}
 				break;
 			case 1:

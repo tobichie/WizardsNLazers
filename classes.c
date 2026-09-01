@@ -12,7 +12,7 @@ const char *class_names[] =
 void showStats(struct Player *entity)
 {
 	// print the players stats to the right of the screen
-	printf("Stats\n\t\tName: %s\n\t\tClass: %s\n\t\tHP: %f\n", entity->name, entity->_class->name, entity->health); // probably gonna have to add \t after every \n not sure.
+	printf("Stats\n\t\tName: %s\n\t\tClass: %s\n\t\tHP: %f\n\n\t\tMP: %f\n", entity->name, entity->_class->name, entity->health, entity->mana); // probably gonna have to add \t after every \n not sure.
 	// just change to ncurses later
 }
 
@@ -32,21 +32,23 @@ struct Class Knight = {
 	.name = "Knight",
 	.index = 0,
 	.add_hp = 20,
-	.add_mp = 10,
+	.add_mp = 100,
 	.add_str = 30,
 	.add_int = 10
 };
 const char *knight_skills[] = {
 	"Slash",
 	"Swipe",
-	"Shield Bash"
+	"Shield Bash",
+	"Mead"
 };
 struct Attack Slash = {
 	.name = "Slash",
 	.dmg = 30,
 	LIGHT,
 	0.8,
-	0
+	0,
+	DAMAGE
 };
 struct Attack Swipe = {
 	.name = "Swipe",
@@ -64,6 +66,15 @@ struct Attack Shield_Bash = {
 	.mp_req = 8
 
 };
+struct Attack Mead = {
+	.name = "Mead",
+	.heal = 50, // check if the ability is heal before subtracting health
+	// make extra heal function or put switch statement in attack function to heal if theres heal stat
+	.accuracy = 0.6,
+	.mp_req = 50
+
+};
+
 // KNIGHT END ________________
 
 // PALADIN -----------------------------
